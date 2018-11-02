@@ -1,0 +1,4 @@
+export const TYPES = {
+    MAKE_SCREENSHOT: 'MAKE_SCREENSHOT',
+    GET_MEMES: 'GET_MEMES'
+};
