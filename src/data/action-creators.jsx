@@ -1,6 +1,16 @@
 import {TYPES} from "./action-types";
 
 
+export const submitBillMeme = () => (dispatch, getState) => {
+    const values  = getState().form.bill.values;
+    let src = 'This is ' + values.name + '%0D%0A%0D%0A' + values.name + ' is ' + values.do + '%0D%0A%0D%0ABe like ' + values.name;
+
+    dispatch({
+        type: TYPES.SUBMIT_BILL_MEME,
+        billSrc: 'https://belikebill.ga/billgen-API.php?text=' + src
+    })
+};
+
 export const getMemes = (dispatch) => {
     fetch('https://api.imgflip.com/get_memes', {
         method: 'GET'
@@ -27,24 +37,20 @@ export const getMemes = (dispatch) => {
 };
 
 export const submitMeme = () => (dispatch, getState) => {
-    //const boxes = JSON.stringify(makeBody(getState));
+    const boxes = JSON.stringify(makeBody(getState));
+    var form = new FormData();
 
-    let body = new FormData();
+    form.append("template_id", "102156234");
+    form.append("boxes", boxes);
+    form.append("username", "gridis");
+    form.append("password", "ox230921");
 
-    body.append('template_id', '102156204');
-    body.append('username', 'gridis');
-    body.append('password', 'ox230921');
-    //body.append('boxes', boxes);
-    body.append('text0', 'blabla');
-    body.append('text1', 'blabla');
-
-    fetch('https://cors-anywhere.herokuapp.com/https://api.imgflip.com/caption_image', {
+    fetch('https://api.imgflip.com/caption_image', {
         headers: {
-            'Origin': "",
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: 'POST',
-        body: body
+        body: form
     })
         .then(response => response.json())
         .then(data => {

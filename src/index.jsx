@@ -8,6 +8,8 @@ import {store} from "./data/store";
 import Route from "react-router-dom/es/Route";
 import {SettingsComponent} from "./settings";
 import {FinalPage} from "./FinalPage";
+import billPage from "./bill/billPage";
+
 
 const App = () => (
     <Provider store={store} >
@@ -16,6 +18,7 @@ const App = () => (
                 <Route exact path="/" component={Layout} />
                 <Route exact path="/settings" component={SettingsComponent} />
                 <Route exact path="/finalPage" component={FinalPage} />
+                <Route exact path="/bill" component={billPage} />
             </div>
         </Router>
     </Provider>

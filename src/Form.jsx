@@ -2,8 +2,6 @@ import TextField from "@material-ui/core/TextField/TextField";
 import {Field, reduxForm} from 'redux-form'
 import React from "react";
 
-const required = value => value ? undefined : 'Required';
-
 const AdaptedTextField = ({input: {value, onChange}, ...custom}) => (
     <TextField
         value={value}
@@ -17,7 +15,7 @@ const Cell = (number, require) => {
     return (
         <div>
             <Field component={AdaptedTextField} name={"label" + number} label={"label" + number}
-                   margin="normal" type="text" validate={[required]} required={require}/>
+                   margin="normal" type="text" required={require}/>
 
             <span style={{marginLeft: 30}}/>
 

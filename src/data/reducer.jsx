@@ -18,6 +18,9 @@ export const reducer = (prevState = initialState, action) => {
 
         case TYPES.DROP_TEMPLATE:
             return {...newState, template: undefined, width: undefined, height: undefined};
+
+        case TYPES.SUBMIT_BILL_MEME:
+            return {...newState, billSrc: action.billSrc};
     }
 
     return newState
