@@ -1,23 +1,33 @@
 import React from 'react'
-import PropTypes from 'prop-types';
 import Gallery from 'react-photo-gallery';
-import {memesSelector} from "./data/selector"
 import {connect} from "react-redux"
+import {chooseTemplate} from "./data/action-creators";
+import Redirect from "react-router/es/Redirect";
 
-const Feed = (props) => (
-    <div>
-        <Gallery photos={props.memes} />
-    </div>
-);
+class Feed extends React.Component {
+    render() {
+        return (
+            <div>
+                <Gallery photos={this.props.memes} onClick={this.onSelect}/>
+                {this.props.template &&
+                    <Redirect to="/settings"/>
+                }
+            </div>
+        );
+    }
 
-Feed.propTypes = {
-    children: PropTypes.node,
-    memes: PropTypes.oneOfType([PropTypes.array, PropTypes.object])
-};
-
+    onSelect = (event, obj) => {
+        this.props.chooseTemplate(obj.photo)
+    };
+}
 
 const mapStateToProps = (state) => ({
-    memes: memesSelector(state)
+    memes: state.app.memes,
+    template: state.app.template
 });
 
-export const FeedComponent = connect(mapStateToProps)(Feed);
+const mapDispatchToProps = (dispatch) => ({
+    chooseTemplate: (template) => dispatch(chooseTemplate(template))
+});
+
+export const FeedComponent = connect(mapStateToProps, mapDispatchToProps)(Feed);

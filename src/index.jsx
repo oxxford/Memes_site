@@ -6,12 +6,16 @@ import {Layout} from "./layout";
 import Provider from "react-redux/es/components/Provider";
 import {store} from "./data/store";
 import Route from "react-router-dom/es/Route";
+import {SettingsComponent} from "./settings";
+import {FinalPage} from "./FinalPage";
 
 const App = () => (
     <Provider store={store} >
         <Router>
             <div>
-                <Route path="/" component={Layout} />
+                <Route exact path="/" component={Layout} />
+                <Route exact path="/settings" component={SettingsComponent} />
+                <Route exact path="/finalPage" component={FinalPage} />
             </div>
         </Router>
     </Provider>
