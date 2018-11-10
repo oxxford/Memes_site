@@ -8,7 +8,7 @@ import Card from "@material-ui/core/Card/Card";
 import style from "./settings.css"
 import {submitMeme} from "./data/action-creators";
 import Typography from "@material-ui/core/Typography/Typography";
-import Link from "react-router-dom/es/Link";
+import {Link} from "react-router-dom";
 
 class Settings extends React.Component {
     render() {

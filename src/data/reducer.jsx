@@ -2,6 +2,7 @@ import {TYPES} from "./action-types";
 
 const initialState = {
     memes: []
+
 };
 
 export const reducer = (prevState = initialState, action) => {

@@ -2,16 +2,13 @@ import React from 'react'
 import Gallery from 'react-photo-gallery';
 import {connect} from "react-redux"
 import {chooseTemplate} from "./data/action-creators";
-import Redirect from "react-router/es/Redirect";
+
 
 class Feed extends React.Component {
     render() {
         return (
             <div>
                 <Gallery photos={this.props.memes} onClick={this.onSelect}/>
-                {this.props.template &&
-                    <Redirect to="/settings"/>
-                }
             </div>
         );
     }

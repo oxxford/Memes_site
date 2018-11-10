@@ -1,11 +1,20 @@
 const express = require("express");
 const app = express();
 
-app.post("/login", (req, res) => {
 
-        let mock = require('./mock');
 
-        console.log(req.body);
+app.get("/api/getUsername", (req, res) =>{
+
+    let mock = require('./mock');
+
+    if(req.body.id === 1){
+        mock.username = 2;
+        mock.userDefaultTown = 10;
+    }
+
+    if(req.body.id === 2){
+        mock.username = 3;
+    }
         res.send(mock);
     }
 );

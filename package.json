@@ -1,17 +1,18 @@
 {
-  "name": "js-project",
+  "name": "my-app",
   "version": "0.1.0",
   "description": "first app",
   "main": "src/index.jsx",
   "scripts": {
     "dev": "nodemon ./startServer.js",
-    "build": "webpack --mode development",
-    "prod": "webpack --mode production"
+    "prod": "webpack --mode production",
+    "test": "jest",
+    "lint": "eslint --ext .js,.jsx ./src"
   },
   "keywords": [
     "npm"
   ],
-  "author": "d.grigorev@innopolis.ru",
+  "author": "innoavvlasov@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -19,17 +20,29 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "axios": "^0.18.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-dynamic-import-node": "^2.1.0",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "eslint": "^5.7.0",
+    "eslint-plugin-react": "^7.11.1",
     "express": "^4.16.3",
-    "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.6.0",
+    "jest-enzyme": "^6.1.2",
+    "moxios": "^0.4.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-test-renderer": "^16.5.2",
     "redux-mock-store": "^1.5.3",
     "regenerator-runtime": "^0.12.1",
+    "standard": "^12.0.1",
     "style-loader": "^0.23.0",
     "webpack": "^4.19.0",
     "webpack-cli": "^3.1.0",
@@ -42,25 +55,48 @@
   },
   "dependencies": {
     "@material-ui/core": "^3.1.1",
-    "babel-jest": "^23.6.0",
-    "base-64": "^0.1.0",
-    "body-parser": "^1.18.3",
-    "jest": "^23.6.0",
-    "lodash": "^4.17.11",
-    "prop-types": "^15.6.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "react-photo-gallery": "^6.2.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-test-renderer": "^16.6.1",
-    "react-webcam": "^1.0.4",
     "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-form": "^7.4.2",
-    "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "redux-thunk": "^2.3.0"
   },
   "resolutions": {
     "babel-core": "7.1.0"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "**/src/**/*.{js,jsx}"
+    ],
+    "testEnvironment": "enzyme",
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "testEnvironmentOptions": {
+      "enzymeAdapter": "react16"
+    },
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "setupTestFrameworkScriptFile": "./forTest.js",
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "json"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|jsx)?$"
   }
 }

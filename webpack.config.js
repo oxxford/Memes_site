@@ -4,17 +4,13 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 const outputDirectory = path.join(__dirname, 'dist');
 
-function srcPath(subdir) {
-    return path.join(__dirname, "src", subdir);
-}
-
 module.exports = {
     mode: "development",
     entry: {
         app: ["./src/index.jsx"]
     },
     output: {
-        path: 'C:\\JavaProjects\\Logistic site\\dist',
+        path: path.join(__dirname, outputDirectory),
         filename: "[name].js"
     },
     module: {
@@ -38,15 +34,6 @@ module.exports = {
                             camelCase: true
                         }
                     }]
-            },
-            {
-                test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {}
-                    }
-                ]
             }
         ]
     },

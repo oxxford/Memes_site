@@ -1,8 +1,8 @@
 import React from "react";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import Typography from "@material-ui/core/Typography/Typography";
 import Button from "@material-ui/core/Button/Button";
-import Link from "react-router-dom/es/Link";
+import {Link} from "react-router-dom";
 import {dropTemplate} from "./data/action-creators";
 
 class finalPage extends React.Component {
@@ -21,7 +21,7 @@ class finalPage extends React.Component {
             </div>
         )
     }
-};
+}
 
 const mapStateToProps = (state) => ({
     meme: state.app.final_meme,
