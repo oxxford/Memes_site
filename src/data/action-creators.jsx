@@ -42,8 +42,8 @@ export const submitMeme = () => (dispatch, getState) => {
 
     form.append("template_id", "102156234");
     form.append("boxes", boxes);
-    form.append("username", "gridis");
-    form.append("password", "ox230921");
+    form.append("username", "");
+    form.append("password", "");
 
     fetch('https://api.imgflip.com/caption_image', {
         headers: {
